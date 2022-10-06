@@ -235,7 +235,7 @@ Berikut contoh implementasinya
 3. Border [(☞ﾟヮﾟ)☞](https://tailwindcss.com/docs/border-width)
 
 Untuk informasi lebih lengkap mengenai property/value lainnya yang tersedia silahkan melihat dokumentasi Tailwind yang telah tersedia.
-
+<br>
 #### Color [(☞ﾟヮﾟ)☞](https://tailwindcss.com/docs/customizing-colors)
 Dengan tailwind kita dapat memberikan warna pada suatu property layaknya saat menggunakan CSS seperti biasannya. Untuk menambahkan warna pada suatu property kita hanya perlu menuliskan nama warna tersebut dan tingkat kepekatan warna.
 
@@ -252,7 +252,7 @@ Dengan tailwind kita dapat memberikan warna pada suatu property layaknya saat me
 ![image](https://user-images.githubusercontent.com/70748569/181488904-e0de49c0-74e4-41c6-820f-4a5930fc9792.png)
 
 Untuk informasi lebih lengkap mengenai property/value lainnya yang tersedia silahkan melihat dokumentasi Tailwind yang telah tersedia.
-
+<br>
 #### Typography  [(☞ﾟヮﾟ)☞](https://tailwindcss.com/docs/font-family)
 Kita dapat melakukan styling pada jenis/cara penulisan (typography) kita di html dengan Tailwind. Hampir semua jenis styling typography pada css telah dicover pada tailwind css. Berikut jenis styling typography yang akan sering digunakan :
 - Font family [▶️](https://tailwindcss.com/docs/font-family), memungkinkan kita mengganti jenis font yang digunakan pada html, bergantung pada jenis font yang telah tersedia atau telah di insert pada web.
@@ -291,7 +291,7 @@ Kita dapat melakukan styling pada jenis/cara penulisan (typography) kita di html
 <p class="text-white">The quick brown fox...</p>
 ```
 Dan masih banyak lagi, untuk lebih lengkapnya bisa di cek pada dokumentasi tailwind pada bagian typograpy.
-
+<br>
 #### Display
 The display property specifies the display behavior (the type of rendering box) of an element.
 
@@ -303,9 +303,9 @@ Dalam HTML, nilai properti display secara default diambil dari spesifikasi tag H
 - block	: selalu dimulai pada line baru dan memiliki width yang memenuhi lebar maksimal layar (full width), dapat dipengaruhi dengan styling height atau width. ex: `<div>`, `<p>`, `<h(1-6)>`
 - inline-block : tidak dimulai pada line baru, tetapi dapat dipengaruhi dengan styling height atau widht.
 [info lanjut](https://www.w3schools.com/cssref/pr_class_display.asp)
-
+<br>
 #### Arbitary Value
-Dengan Menggunakan Tailwind atau frameworks CSS lainnya, kita akan terbiasa untuk menggunakan default value atau batasan yang telah disediakan framework atau menggunakan costume value yang kita definisikan sendiri. Akan tetapi pada suatu kondisi kita akan mendapatkan kondisi dimana kita perlu keluar dari batasan yang telah didefinisikan framework untuk mendapatkan hasil yang benar-benar spesifik seperti yang kita inginkan. 
+Dengan Menggunakan Tailwind atau frameworks CSS lainnya, kita akan terbiasa untuk menggunakan default value atau batasan yang telah disediakan framework atau menggunakan custom value yang kita definisikan sendiri. Akan tetapi pada suatu kondisi kita akan mendapatkan kondisi dimana kita perlu keluar dari batasan yang telah didefinisikan framework untuk mendapatkan hasil yang benar-benar spesifik seperti yang kita inginkan. 
 
 Mungkin pada kondisi tersebut kita membutuhkan sesuatu seperti `padding: 25.5px, background-color: #39b2f3`. Hal tersebut mungkin tidak disediak oleh class utlitas default milik Tailwind, akan tetapi Tailwind telah memberikan kita fitur untuk memasukkan nilai sembarang sesuai keinginan kita terhadapa class utilitas yang dimiliki Tailwind yang disebut dengan *arbitrary-value*. 
 
@@ -316,11 +316,11 @@ Hal ini dapat digunakan dengan mudah. Kita cukup menambahkan value yang kita ing
       </div>
 ```
 ![image](https://user-images.githubusercontent.com/70748569/181917046-d1b521fd-0c73-44f8-ae2e-8f499f8b3fb2.png)
-
+<br>
 #### Arbitary Variant
-Jika arbitrary value digunakan untuk membuat costume value, Dengan arbitrary variant kita dapat membuat costume variant untuk dijadikan layaknya kostum selector. Ini merupakan fitur baru yang ditambahkan Tailwind pada update Tailwind 3.1 .
+Jika arbitrary value digunakan untuk membuat custom value, Dengan arbitrary variant kita dapat membuat custom variant untuk dijadikan layaknya kostum selector. Ini merupakan fitur baru yang ditambahkan Tailwind pada update Tailwind 3.1 .
 
-Tidak jauh berbeda, kita hanya perlu menambahakan *bracket* disertai costume property yang akan diberikan. Fitur ini dapat dimanfaatkan membuat costume selector untuk mengimplentasikan class utilitas pada suatu element yang spesifik.
+Tidak jauh berbeda, kita hanya perlu menambahakan *bracket* disertai custom property yang akan diberikan. Fitur ini dapat dimanfaatkan membuat custom selector untuk mengimplentasikan class utilitas pada suatu element yang spesifik.
 barikut contoh implementasinya
 
 ![image](https://user-images.githubusercontent.com/70748569/181918443-64a8319a-6807-4fd4-b0d0-87f4ad26d364.png)
