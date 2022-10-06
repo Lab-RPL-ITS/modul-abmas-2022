@@ -3,6 +3,7 @@
 # Table of contents
 
 - [Table of contents](#table-of-contents)
+- [Persiapan](#persiapan)
 - [Intro](#intro)
   - [Requirement](#requirement)
   - [Tailwind Documentation](#tailwind-documentation)
@@ -14,13 +15,13 @@
   - [Utility-First Fundamental](#utility-first-fundamental)
   - [Basic CSS with Tailwind](#basic-css-with-tailwind)
     - [CSS Syntax vs Tailwind Utility](#css-syntax-vs-tailwind-utility)
-    - [Arbitary Value](#arbitary-value)
-    - [Arbitary Variant](#arbitary-variant)
     - [Box Model](#box-model)
     - [Color](#css)
+    - [Typography](#typography)
+    - [display](#display)
+    - [Arbitary Value](#arbitary-value)
+    - [Arbitary Variant](#arbitary-variant)
   - [States Styling (Hover, Focus, Active, etc)](#state-styling-(hover,-focus,active,-etc))
-  - [Responsive Design](#responsive-design)
-    - [Mobile First Design](#mobile-first-design)
   - [Reusing Style](#reusing-style)
   - [Tailwind Directives](#tailwind-directives)
     - [@tailwind](#tailwind)
@@ -29,6 +30,16 @@
 
 
 - [Referensi](#referensi)
+
+# Persiapan
+
+Sebelum memulai materi, terdapat beberapa hal yang perlu dipersiapkan:
+
+1. Web Browser <br/>
+   Contoh: Google Chrome (recommended), Mozilla Firefox, Microsoft Edge, atau Safari.
+2. Text Editor <br/>
+   Contoh: [Visual Studio Code](https://code.visualstudio.com/download) (recommended), Sublime Text, Atom, [Notepad++](https://notepad-plus-plus.org/downloads/v8.4.5/), atau Notepad.
+3. Koneksi Internet <br/>
 
 # Intro
 
@@ -68,12 +79,12 @@ Setidaknya terdapat 4 cara/panduan utama dalam untuk melakukan instalasi tailwin
 3. Menggunakan PostCSS
 4. Mengikuti Panduan untuk suatu Framework tertentu
 
-Dalam kesempatan kali ini, kita akan menggunakan 2 cara yang paling mudah dan cepat untuk dilakukan yaitu dengan Tailwind CLI dan Play CDN.
+Dalam kesempatan kali ini, kita akan menggunakan cara yang paling mudah dan cepat untuk dilakukan yaitu dengan Tailwind Play CDN.
 
-- #### Tailwind CLI [(⌐■_■)](https://tailwindcss.com/docs/installation)
 - #### Play CDN [(⊙_⊙;)](https://tailwindcss.com/docs/installation/play-cdn)
 
 Untuk mempermudah penggunaan Tailwind, sangat direkomendasikan untuk menggunakan *extension* [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) (untuk vscode)
+Untuk mengaktifkan intellisense jika menggunakan play cdn, silahkan tambahakan file dengan nama `tailwind.config.js` pada folder project. 
 
 <br><br><br>
 # Tailwind Concepts
@@ -143,6 +154,20 @@ Namun dengan menggunakan Tailwind kita dapat membuat hal yang serupa dengan mema
 
 Dengan *utility-first* frameworks (dalam hal ini: Tailwind) yang menyediakan low-level class seperti margin, padding, color dll. kita dapat mengkostumisasi design web yang kita inginkan dengan lebih leluasa langsung dari file HTML.
 
+### Kenapa pakai Inline-style css saja ?
+Penggunaan class styling memiliki banyak kelebihan dari pada penggunaan inline-styling, diantaranya sebagai berikut:
+- class dapat menggunakan media-query
+- class membatasi pengulangan CSS
+- class dapat mencakup beberapa properti sekaligus.
+- class mendukung pseudo selectors dan pseudo elements dll.
+- class dapat menentukan keyframes untuk animasi
+- class (stylesheet) dapat diproses dengan Post-CSS, SASS, dll. 
+- class utilitas tidak mengembangkan CSS Anda dari waktu ke waktu. Jauh lebih mudah untuk mempertahankan.
+- class dapat diterapkan ke HTML baru di WYSIWYGs (What-You-See-Is-What-You-Get).
+- class utilitas lebih mudah didokumentasikan dan dipelajari.
+- bisa mendapatkan auto-complete untuk menemukan apa yang dibutuhkan dan kesalahan jika ada sesuatu yang salah.
+- dengan class tailwind kita bisa mendapatkan penggunaan property dan value yan tepat.
+
 ## Basic CSS with Tailwind
 ### CSS Syntax vs Tailwind Utility
 Pada penulisan syntax CSS kita mengenal tentang `selector`, `property`, dan `value`
@@ -161,60 +186,7 @@ Tidak jauh berbeda, utility class yang telah disediakan oleh Tailwind juga memil
 ```html
     <h1 class="text-xl">Hello World</h1>
 ```
-`text` merujuk pada property untuk font, `xl` menunjukan 2 hal, yaitu property yang akan diubah merupakan *size* dari font dan besarnya adalah xl = 1.25rem = 20px sesuai pada dekumentasi Tailwind [berikut](https://tailwindcss.com/docs/font-size#setting-the-font-size).
-
-#### Arbitary Value
-Dengan Menggunakan Tailwind atau frameworks CSS lainnya, kita akan terbiasa untuk menggunakan default value atau batasan yang telah disediakan framework atau menggunakan costume value yang kita definisikan sendiri. Akan tetapi pada suatu kondisi kita akan mendapatkan kondisi dimana kita perlu keluar dari batasan yang telah didefinisikan framework untuk mendapatkan hasil yang benar-benar spesifik seperti yang kita inginkan. 
-
-Mungkin pada kondisi tersebut kita membutuhkan sesuatu seperti `padding: 25.5px, background-color: #39b2f3`. Hal tersebut mungkin tidak disediak oleh class utlitas default milik Tailwind, akan tetapi Tailwind telah memberikan kita fitur untuk memasukkan nilai sembarang sesuai keinginan kita terhadapa class utilitas yang dimiliki Tailwind yang disebut dengan *arbitrary-value*. 
-
-Hal ini dapat digunakan dengan mudah. Kita cukup menambahkan value yang kita inginkan kedalam *bracket* `[value]` setelah property class yang kita inginkan.
-```html
-      <div class="p-[25.5px] bg-[#39b2f3]">
-        Arbitrary Value
-      </div>
-```
-![image](https://user-images.githubusercontent.com/70748569/181917046-d1b521fd-0c73-44f8-ae2e-8f499f8b3fb2.png)
-
-#### Arbitary Variant
-Jika arbitrary value digunakan untuk membuat costume value, Dengan arbitrary variant kita dapat membuat costume variant untuk dijadikan layaknya kostum selector. Ini merupakan fitur baru yang ditambahkan Tailwind pada update Tailwind 3.1 .
-
-Tidak jauh berbeda, kita hanya perlu menambahakan *bracket* disertai costume property yang akan diberikan. Fitur ini dapat dimanfaatkan membuat costume selector untuk mengimplentasikan class utilitas pada suatu element yang spesifik.
-barikut contoh implementasinya
-
-![image](https://user-images.githubusercontent.com/70748569/181918443-64a8319a-6807-4fd4-b0d0-87f4ad26d364.png)
-
-```html
-          <div class="mt-3 flex space-x-2 overflow-hidden">
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=2" alt=""/>
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=3" alt=""/>
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=4" alt=""/>
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=5" alt=""/>
-          </div>
-
-```
-Bagaiman jika ingin selain element nomor 2 yang terakhir memiliki border dengan warna `teal-400`. Hal ini dapat mudah dilakukan jika kita mengetahui berapa jumlah element yang ada dengan cukup menambahkan styling khusus untuk element tersebut. Tetapi jika jumlah element bersifat dinamis, jumlahnya menjadi tidak menentu, hal ini menjadi sulit untuk dilakukan. Pada kondisi ini arbitrary variant dapat berguna untuk menciptakan selector khusus yang akan merujuk pada element tersebut. 
-```html
-          <div class="mt-3 flex space-x-2 overflow-hidden [&>:not(:nth-last-child(2))]:border-teal-400">
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=2" alt=""/>
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=3" alt=""/>
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=4" alt=""/>
-            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=5" alt=""/>
-          </div>
-
-```
-![image](https://user-images.githubusercontent.com/70748569/181918812-b7e2ef9c-a3ed-46ce-bc72-115d3e054cae.png)
-
-Pada contoh diatas, kita menambahkan `[&>:not(:nth-last-child(2))]:border-teal-400` pada class milik parent element. 
-- `&` merupakan selector yang merujuk pada element utama yang merupakan tempat class ini ditambahkan.
-- `>` menunjukkan hubungan antara selector element di sebelah kiri dengan selector elemen disebelah kanan adalah hubungan parent to child (*[parent] > [child]*) 
-- `:not()` negasi selector, mengambil "yang bukan"
-- `:nth-last-child(2)` selector yang memilih child ke-n dari belakang/terakhir
-- `:not(:nth-last-child(2))` = "ambil yang bukan child ke-2 dari belakang"
-
-Dengan begitu element ke-2 dari belakang tidak akan dikenakan styling seperti yang telah kita implementasikan diatas.
-
-untuk informasi mengenai jenis selector, dapat diliat pada link [berikut](https://www.w3schools.com/cssref/css_selectors.asp)
+`text` merujuk pada property untuk font, `xl` menunjukan 2 hal, yaitu (1) property yang akan diubah merupakan *size* dari font, (2) dan besarnya adalah xl = 1.25rem = 20px sesuai pada dekumentasi Tailwind [berikut](https://tailwindcss.com/docs/font-size#setting-the-font-size).
 
 #### Box Model
 Kita telah mempelajari dalam memberikan *styling* pada Boxmodel terdapat beberapa property yang dapat kita gunakan yaitu Margin, Border, Padding, dan Content dari tag HTML itu sediri
@@ -281,6 +253,110 @@ Dengan tailwind kita dapat memberikan warna pada suatu property layaknya saat me
 
 Untuk informasi lebih lengkap mengenai property/value lainnya yang tersedia silahkan melihat dokumentasi Tailwind yang telah tersedia.
 
+#### Typography  [(☞ﾟヮﾟ)☞](https://tailwindcss.com/docs/font-family)
+Kita dapat melakukan styling pada jenis/cara penulisan (typography) kita di html dengan Tailwind. Hampir semua jenis styling typography pada css telah dicover pada tailwind css. Berikut jenis styling typography yang akan sering digunakan :
+- Font family [▶️](https://tailwindcss.com/docs/font-family), memungkinkan kita mengganti jenis font yang digunakan pada html, bergantung pada jenis font yang telah tersedia atau telah di insert pada web.
+```html
+<p class="font-sans ">The quick brown fox ...</p>
+<p class="font-serif ">The quick brown fox ...</p>
+<p class="font-mono ">The quick brown fox ...</p>
+```
+- Font sizing [▶️](https://tailwindcss.com/docs/font-size), Melakukan perubahan ukuran font sesuai keinginan kita.
+```html
+<p class="text-sm ">The quick brown fox ...</p>
+<p class="text-base ">The quick brown fox ...</p>
+<p class="text-lg ">The quick brown fox ...</p>
+<p class="text-xl ">The quick brown fox ...</p>
+<p class="text-2xl ">The quick brown fox ...</p>
+```
+- Font weight[▶️](https://tailwindcss.com/docs/font-weight), Melakukan perubahan ketebalan font sesuai keinginan kita.
+```html
+<p class="font-light ">The quick brown fox ...</p>
+<p class="font-normal ">The quick brown fox ...</p>
+<p class="font-medium ">The quick brown fox ...</p>
+<p class="font-semibold ">The quick brown fox ...</p>
+<p class="font-bold ">The quick brown fox ...</p>
+```
+- Text align[▶️](https://tailwindcss.com/docs/text-align), Melakukan perubahan posisi penulisan teks (aligning)
+```html
+<p class="text-left ">So I started to walk into the water...</p>
+<p class="text-center ">So I started to walk into the water...</p>
+<p class="text-right ">So I started to walk into the water...</p>
+<p class="text-justify ">So I started to walk into the water...</p>
+```
+- Text coloring[▶️](https://tailwindcss.com/docs/text-color), Melakukan perubahan warna teks (coloring)
+```html
+<p class="text-sky-400">The quick brown fox...</p>
+<p class="text-black">The quick brown fox...</p>
+<p class="text-white">The quick brown fox...</p>
+```
+Dan masih banyak lagi, untuk lebih lengkapnya bisa di cek pada dokumentasi tailwind pada bagian typograpy.
+
+#### Display
+The display property specifies the display behavior (the type of rendering box) of an element.
+
+In HTML, the default display property value is taken from the HTML specifications or from the browser/user default style sheet. The default value in XML is inline, including SVG elements.
+Properti display menentukan perilaku tampilan (tipe kotak rendering) dari suatu elemen.
+
+Dalam HTML, nilai properti display secara default diambil dari spesifikasi tag HTML atau dari stylesheet browser/pengguna. Berikut display yang akan sering ditemukan: 
+- inline :  tidak dimulai pada baris baru dan akan mwmiliki lebar/width yang sesuai dengan yang dibutuhkan (fit width), semua property styling height dan width tidak akan berpengaruh. ex: `<span>`, `<em>`, `<i>`
+- block	: selalu dimulai pada line baru dan memiliki width yang memenuhi lebar maksimal layar (full width), dapat dipengaruhi dengan styling height atau width. ex: `<div>`, `<p>`, `<h(1-6)>`
+- inline-block : tidak dimulai pada line baru, tetapi dapat dipengaruhi dengan styling height atau widht.
+[info lanjut](https://www.w3schools.com/cssref/pr_class_display.asp)
+
+#### Arbitary Value
+Dengan Menggunakan Tailwind atau frameworks CSS lainnya, kita akan terbiasa untuk menggunakan default value atau batasan yang telah disediakan framework atau menggunakan costume value yang kita definisikan sendiri. Akan tetapi pada suatu kondisi kita akan mendapatkan kondisi dimana kita perlu keluar dari batasan yang telah didefinisikan framework untuk mendapatkan hasil yang benar-benar spesifik seperti yang kita inginkan. 
+
+Mungkin pada kondisi tersebut kita membutuhkan sesuatu seperti `padding: 25.5px, background-color: #39b2f3`. Hal tersebut mungkin tidak disediak oleh class utlitas default milik Tailwind, akan tetapi Tailwind telah memberikan kita fitur untuk memasukkan nilai sembarang sesuai keinginan kita terhadapa class utilitas yang dimiliki Tailwind yang disebut dengan *arbitrary-value*. 
+
+Hal ini dapat digunakan dengan mudah. Kita cukup menambahkan value yang kita inginkan kedalam *bracket* `[value]` setelah property class yang kita inginkan.
+```html
+      <div class="p-[25.5px] bg-[#39b2f3]">
+        Arbitrary Value
+      </div>
+```
+![image](https://user-images.githubusercontent.com/70748569/181917046-d1b521fd-0c73-44f8-ae2e-8f499f8b3fb2.png)
+
+#### Arbitary Variant
+Jika arbitrary value digunakan untuk membuat costume value, Dengan arbitrary variant kita dapat membuat costume variant untuk dijadikan layaknya kostum selector. Ini merupakan fitur baru yang ditambahkan Tailwind pada update Tailwind 3.1 .
+
+Tidak jauh berbeda, kita hanya perlu menambahakan *bracket* disertai costume property yang akan diberikan. Fitur ini dapat dimanfaatkan membuat costume selector untuk mengimplentasikan class utilitas pada suatu element yang spesifik.
+barikut contoh implementasinya
+
+![image](https://user-images.githubusercontent.com/70748569/181918443-64a8319a-6807-4fd4-b0d0-87f4ad26d364.png)
+
+```html
+          <div class="mt-3 flex space-x-2 overflow-hidden">
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=2" alt=""/>
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=3" alt=""/>
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=4" alt=""/>
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=5" alt=""/>
+          </div>
+
+```
+Bagaiman jika ingin selain element nomor 2 yang terakhir memiliki border dengan warna `teal-400`. Hal ini dapat mudah dilakukan jika kita mengetahui berapa jumlah element yang ada dengan cukup menambahkan styling khusus untuk element tersebut. Tetapi jika jumlah element bersifat dinamis, jumlahnya menjadi tidak menentu, hal ini menjadi sulit untuk dilakukan. Pada kondisi ini arbitrary variant dapat berguna untuk menciptakan selector khusus yang akan merujuk pada element tersebut. 
+```html
+          <div class="mt-3 flex space-x-2 overflow-hidden [&>:not(:nth-last-child(2))]:border-teal-400">
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=2" alt=""/>
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=3" alt=""/>
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=4" alt=""/>
+            <img class="rounded-3xl border-4 h-28" src="https://picsum.photos/200/300?avatar=5" alt=""/>
+          </div>
+
+```
+![image](https://user-images.githubusercontent.com/70748569/181918812-b7e2ef9c-a3ed-46ce-bc72-115d3e054cae.png)
+
+Pada contoh diatas, kita menambahkan `[&>:not(:nth-last-child(2))]:border-teal-400` pada class milik parent element. 
+- `&` merupakan selector yang merujuk pada element utama yang merupakan tempat class ini ditambahkan.
+- `>` menunjukkan hubungan antara selector element di sebelah kiri dengan selector elemen disebelah kanan adalah hubungan parent to child (*[parent] > [child]*) 
+- `:not()` negasi selector, mengambil "yang bukan"
+- `:nth-last-child(2)` selector yang memilih child ke-n dari belakang/terakhir
+- `:not(:nth-last-child(2))` = "ambil yang bukan child ke-2 dari belakang"
+
+Dengan begitu element ke-2 dari belakang tidak akan dikenakan styling seperti yang telah kita implementasikan diatas.
+
+untuk informasi mengenai jenis selector, dapat diliat pada link [berikut](https://www.w3schools.com/cssref/css_selectors.asp)
+
 ## States Styling (Hover, Focus, Active, etc) [\(￣︶￣*\))](https://tailwindcss.com/docs/hover-focus-and-other-states)
 Dalam styling menggunakan CSS kita dapat menggunakan *pseudo-class* seperti:
 - `hover`: Kondisi disaat pointer berada di pada element tertentu
@@ -328,81 +404,7 @@ Kita juga dapat menumpuk beberapa kondisi yang memungkinkan untuk kondisi yang l
 <button class="md:hover:bg-fuchsia-600 ...">Button</button>
 ```
 
-## Responsive Design [o(*￣▽￣*)ブ](https://tailwindcss.com/docs/responsive-design)
-Tailwind juga memudahkan kita dalam membuat design web yang responsif untuk berbagai macam perangkat.
 
-Dengan CSS biasa, kita biasanya akan membuat design yang responsive dengan mengunakan media-query untuk tiap-tiap port yang diinginkan.
-
-![image](https://user-images.githubusercontent.com/70748569/181670961-5fe305a5-f3cc-4d57-a57a-83e0111438a0.png)
-
-
-```css
-.kotak{
-    background-color: white;
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 640px) {
-    .kotak{
-        background-color: gray;
-    }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .kotak{
-        background-color: black;
-    }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 1024px) {
-    .kotak{
-        background-color: red;
-    }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1280px) {
-    .kotak{
-        background-color: blue;
-    }
-}
-
-```
-Untuk mempermudah pembuatan design web yang responsif, Tailwind telah menyediakan media-query yang untuk semua class-class utilitas yang tersedia. Kita hanya perlu menambahkan prefix seperti pada menambahkan pseudo-class yang telah kita pelajari sebelumnya.
-```html
-<div class="bg-white sm:bg-gray-500 md:bg-black lg:bg-red-500 xl:bg-blue-600 ...">
-    KOTAK   
-</div>
-```
-Berikut adalah default *breakpoint* yang digunakan Tailwind untuk setiap prefixnya
-
-
-| Breakpoint prefix | Minimum width | CSS                                 |
-|-------------------|---------------|-------------------------------------|
-| sm                | 640px         | @media (min-width: 640px) { ... }   |
-| md                | 768px         | @media (min-width: 768px) { ... }   |
-| lg                | 1024px        | @media (min-width: 1024px) { ... }  |
-| xl                | 1280px        | @media (min-width: 1280px) { ... }  |
-| 2xl               | 1536px        | @media (min-width: 1536px) { ... }  |
-
-
-### Mobile First Design
-Secara default, Tailwind menerapkan Mobile First dalam sistem breakpoint yang digunakan. Hal ini berarti untuk class utilitas biasa tanpa prefix breakpioint seperti `uppercase` saja akan diterapkan untuk semua ukuran layar, sedangkan untuk class utilitas yang memilki prefix breakpoin seperti `lg:uppercase` hanya akan diterapkan untuk layar mulai dari `xl` (1024px) keatas sampai breakpoint lainnya yang lebih besar.
-
-```html
-<div class="bg-white sm:bg-gray-500 md:bg-black lg:bg-red-500 xl:bg-blue-600 ...">
-    KOTA
-</div>
-```
-Seperti pada contoh di atas
-- `bg-white` diterapkan secara keseluruhan layar dimana pada ukuran layar tersebut tidak diatur oleh breakpoint apapun. Oleh karena itu `bg-white` hanya diterapkan pada ukuran layara < 640px karen untuk ukuran layar >= 640px telah diatur oleh breackpoint prefix `sm`
-- `sm:bg-gray-500` diterapkan hanya untuk layar 640px keatas sampai ada breakpoint lainnya. 
-- `md:bg-black` diterapkan hanya untuk layar 768px keatas sampai ada breakpoint lainnya.
-- dst.
-
-<br><br><br>
 # Reusing Style
 Dalam melakukan styling tentunya kita akan sering bertemu pada kondisi dimana kita akan menggunakan style yang sama untuk elemen-elemen yang serupa.
 
@@ -441,20 +443,6 @@ Untuk mengatasi masalah diatas Tailwind menyediakan fitur dimana kita dapat memb
 disini ``inline-block h-12 w-12 rounded-full ring-2 ring-white`` telah diubah menjadi ``frame-bulat-bulat``. Akan tetapi Tailwind belum memiliki class dengan nama ``frame-bulat-bulat``, oleh karena itu kita akan "mengenalkan" class tersebut kepada Tailwind.
 
 2. Membuat class baru dengan @apply pada layer yang sesai
-- Jika menggunakan CLI tambahkan class pada file `input.css`.
-```
-/* input.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-/* tambahkan class berdasarkan layer yang sesuai*/
-@layer components{
-    .frame-bulat-bulat{
-        @apply inline-block h-12 w-12 rounded-full ring-2 ring-white;
-    }
-}
-```
-
 - Jika menggunakan Play CDN tambahkan class di tag `<style type="text/tailwindcss">` pada `<head>` 
 ```html
 <head>
