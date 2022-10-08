@@ -291,7 +291,9 @@ Kita dapat melakukan styling pada jenis/cara penulisan (typography) kita di html
 <p class="text-white">The quick brown fox...</p>
 ```
 Dan masih banyak lagi, untuk lebih lengkapnya bisa di cek pada dokumentasi tailwind pada bagian typograpy.
+
 <br>
+
 #### Display
 The display property specifies the display behavior (the type of rendering box) of an element.
 
@@ -303,7 +305,9 @@ Dalam HTML, nilai properti display secara default diambil dari spesifikasi tag H
 - block	: selalu dimulai pada line baru dan memiliki width yang memenuhi lebar maksimal layar (full width), dapat dipengaruhi dengan styling height atau width. ex: `<div>`, `<p>`, `<h(1-6)>`
 - inline-block : tidak dimulai pada line baru, tetapi dapat dipengaruhi dengan styling height atau widht.
 [info lanjut](https://www.w3schools.com/cssref/pr_class_display.asp)
+
 <br>
+
 #### Arbitary Value
 Dengan Menggunakan Tailwind atau frameworks CSS lainnya, kita akan terbiasa untuk menggunakan default value atau batasan yang telah disediakan framework atau menggunakan custom value yang kita definisikan sendiri. Akan tetapi pada suatu kondisi kita akan mendapatkan kondisi dimana kita perlu keluar dari batasan yang telah didefinisikan framework untuk mendapatkan hasil yang benar-benar spesifik seperti yang kita inginkan. 
 
@@ -317,6 +321,7 @@ Hal ini dapat digunakan dengan mudah. Kita cukup menambahkan value yang kita ing
 ```
 ![image](https://user-images.githubusercontent.com/70748569/181917046-d1b521fd-0c73-44f8-ae2e-8f499f8b3fb2.png)
 <br>
+
 #### Arbitary Variant
 Jika arbitrary value digunakan untuk membuat custom value, Dengan arbitrary variant kita dapat membuat custom variant untuk dijadikan layaknya kostum selector. Ini merupakan fitur baru yang ditambahkan Tailwind pada update Tailwind 3.1 .
 
@@ -587,6 +592,60 @@ Untuk menggunakan perintah `!important` kita hanya perlu menambahakan `!` pada s
 }
 
 ```
+
+### Tips: Cara menambahkan font dari google font ke project tailwind
+
+1. Cari font yang diinginkan pada web googel font [font.google.com](https://fonts.google.com/)
+
+![image](https://user-images.githubusercontent.com/70748569/194710804-7adc00ec-da9c-44d5-8de7-6d1b20f812f0.png)
+
+2. tambahakan font yang fiinginkan
+
+![image](https://user-images.githubusercontent.com/70748569/194710934-0ad02656-7715-4289-a9e8-9eb7400cbe67.png)
+
+silahkan tambahkan sesuai dengan kebutuhan, (* menambahkan font bold, semi bold, dll. memungkinkan kita untuk menggunakan class `font-bold` dsb. untuk font tersebut).
+
+3. setelah ditambahkan, tab font akan muncul disebelah kanan web, dan copy tag `<link>...</link>` yang ada pada web tersebut.
+
+![image](https://user-images.githubusercontent.com/70748569/194711232-9b25ead7-83ee-444b-808d-0a12fb99f050.png)
+
+4. paste tag link yang sudah dicopy ke project html pada bagian `<head>`
+
+![image](https://user-images.githubusercontent.com/70748569/194711290-f88ba8ea-f523-43b2-904d-ea5a9f007916.png)
+
+5. tambahkan code berikut juga pada tag head
+```html
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              // tambahkan nama font yang sudah gunakan pada link, nama font dapat dilihat web google font
+              // namafont : 'namafotn dari google font'
+            },
+          },
+        },
+      }
+    </script>
+```
+
+6. tambahkan nama font dan nama font yang disediakan pada googel font di tab kanan di bagian bawah
+
+![image](https://user-images.githubusercontent.com/70748569/194711432-64605755-edcf-4044-957e-71e703d99c08.png)
+
+** huruf besar kecil berpengaruh 
+tambahakan seperti berikut:
+![image](https://user-images.githubusercontent.com/70748569/194711342-a88e92ac-05bc-4ed7-b8de-9ef0c4f24c2b.png)
+
+8. gunakan font dengan class tailwind, sesuaiakan dengan nama yang diberikan `font-namafont`
+
+![image](https://user-images.githubusercontent.com/70748569/194711490-f6141c50-51b9-47a5-a2ac-a7690180fab0.png)
+![image](https://user-images.githubusercontent.com/70748569/194711499-1fa6b759-cd26-4933-8b19-ea62ff20270d.png)
+
+**Taraa 🌟🌠
+
+![image](https://user-images.githubusercontent.com/70748569/194711561-6baf9d63-e1b5-4914-9ab5-74637c1de12d.png)
+
 
 <br><br><br>
 # Referensi
