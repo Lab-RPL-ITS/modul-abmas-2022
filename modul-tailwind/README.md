@@ -1,7 +1,6 @@
 # Tailwind 
 
 # Daftar Isi
-
 - [Daftar Isi](#table-of-contents)
 - [Persiapan](#persiapan)
 - [Intro](#intro)
