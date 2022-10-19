@@ -1,16 +1,14 @@
 # Tailwind 
 
-# Table of contents
+# Daftar Isi
 
-- [Table of contents](#table-of-contents)
+- [Daftar Isi](#table-of-contents)
 - [Persiapan](#persiapan)
 - [Intro](#intro)
   - [Requirement](#requirement)
   - [Tailwind Documentation](#tailwind-documentation)
-
 - [Setup](#setup)
   - [Instalation](#installation)
-
 - [Tailwind Concepts](#tailwind-concepts)
   - [Utility-First Fundamental](#utility-first-fundamental)
   - [Basic CSS with Tailwind](#basic-css-with-tailwind)
